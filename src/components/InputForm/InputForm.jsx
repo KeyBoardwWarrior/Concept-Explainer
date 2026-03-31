@@ -1,5 +1,6 @@
 import "./InputForm.css";
-function InputForm(){
+
+function InputForm({currentVal, setButtonVal}){
     return(
         <>
             <div className="inputform-container">
@@ -22,9 +23,9 @@ function InputForm(){
                         <div className="button-border-wrapper">
                             <div className="button-group">
                                 <div className="buttons">
-                                    <button>Beginner</button> 
-                                    <button>Intermediate</button> 
-                                    <button>Expert</button> 
+                                    <button style={{backgroundColor: currentVal === 1 ? 'var(--primary-color' : 'transparent'}} onClick={() => setButtonVal(1)}>Beginner</button> 
+                                    <button style={{backgroundColor: currentVal === 2 ? 'var(--primary-color' : 'transparent'}} onClick={() => setButtonVal(2)}>Intermediate</button> 
+                                    <button style={{backgroundColor: currentVal === 3 ? 'var(--primary-color' : 'transparent'}} onClick={() => setButtonVal(3)}>Expert</button> 
                                 </div> 
                             </div>
                         </div>

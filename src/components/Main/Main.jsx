@@ -1,7 +1,10 @@
 import "./Main.css";
 import InputForm from "../InputForm/InputForm";
 import Footer from "../Footer/Footer";
+import { useState } from "react";
+
 function Main(){
+    const [buttonVal,setButtonVal] = useState(1);
     return(
         <>
             <div className="main-container">
@@ -20,7 +23,7 @@ function Main(){
                     </div> 
 
                     <div className="input-container">
-                        <InputForm/>
+                        <InputForm currentVal={buttonVal} setButtonVal={setButtonVal}/>
                     </div>
 
             </div> 

@@ -1,0 +1,543 @@
+button{
+    cursor:pointer;
+}
+.result-container{
+    display:flex;
+    width:100%;
+    background-image:linear-gradient(125deg,var(--background-color)35%,#384C7F 100%);
+    align-items: flex-start;
+
+    .left-section{
+        width:50%;
+        display:flex;
+        flex-direction: column;
+
+        .title-section{
+            display:flex;
+
+            .title{
+                font-family: var(--heading-font);
+                color:var(--primary-color);
+                font-weight:800;
+            }
+        }
+
+        .definition-section{
+            display:flex;
+            flex-direction: column;
+            font-family: var(--primary-font);
+            border:1px solid var(--accent-color);
+            border-radius: 0.75em;
+            background-color:var(--surface-color);
+
+            .outer-header-section{
+                display: flex;
+
+                .header{
+                    color:var(--secondary-color);
+                    font-weight:600;
+                }
+            }
+
+            .body-section{
+                display:flex;
+
+                .body{
+                    color:var(--text-color);
+                    font-weight:400;
+                }
+            }
+        }
+
+        .principles-section, .application-section{
+            display: flex;
+            flex-direction: column;
+            font-family: var(--primary-font);
+            border:1px solid var(--accent-color);
+            border-radius: 0.75em;
+            background-color:var(--surface-color);
+
+            .outer-header-section{
+                display: flex;
+
+                .header{
+                    color:var(--secondary-color);
+                    font-weight:600;
+                }
+            }
+
+            .principle-uno-section, .principle-dos-section, .application-uno-section, .application-dos-section{
+                display: flex;
+                flex-direction: column;
+                border:1px solid var(--accent-color);
+                border-radius: 0.75em;
+
+                .inner-title-section{
+                    display: flex;
+
+                    .inner-title{
+                        color:var(--text-color);
+                        font-weight: 500;
+                    }
+                }
+
+                .body-section{
+                    display:flex;
+
+                    .body{
+                        color:var(--text-color);
+                        font-weight:400;
+                    }
+                }
+            }
+        }
+    }
+
+    .right-section{
+        width:50%;
+        display:flex;
+        flex-direction: column;
+        border:1px solid var(--accent-color);
+        border-radius: 0.75em;
+
+        .analogy-container{
+            display:flex;
+            flex-direction:column;
+
+            .title-section{
+                display:flex;
+                font-family: var(--heading-font);
+
+                .title{
+                    font-family: var(--heading-font);
+                    color:var(--primary-color);
+                    font-weight: 800;
+                }
+
+            }
+
+            .body-section{
+                display:flex;
+                font-family: var(--primary-font);
+                background-color:var(--surface-color);
+
+                .body{
+                    color:var(--text-color);
+                    font-weight: 400;
+                }
+            }
+
+            .button-section{
+                display:flex;
+
+                button{
+                    font-family: var(--unique-font);
+                    font-weight: 700;
+                    background-image: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+                    color:var(--text-color);
+                    border:none;
+                    border-radius:0.5em;
+                }
+            }
+        }
+    }
+}
+
+
+@media (max-width:2560px){
+    .result-container{
+        padding:3.5em;
+        gap:1.5em;
+
+        .left-section{
+            padding:0.5em;
+            gap:0.5em;
+
+            .title-section{
+                padding:0.5em;
+
+                .title{
+                    font-size:3.5em;
+                }
+            }
+
+            .definition-section{
+                padding:0.5em;
+
+                .outer-header-section{
+                    .header{
+                        font-size:2.5em;
+                    }
+                }
+
+                .body-section{
+                    .body{
+                        font-size:1.9em;
+                        line-height:1.1em;
+                    }
+                }
+            }
+
+            .principles-section, .application-section{
+                padding:0.5em; 
+                gap:0.6em;
+
+               .outer-header-section{
+                    .header{
+                        font-size:2.5em;
+                    }
+               }
+
+               .principle-uno-section, .principle-dos-section, .application-uno-section, .application-dos-section{
+                    padding:0.5em;
+                    gap:0.5em;
+                    .inner-title-section{
+                        .inner-title{
+                            font-size:2.25em;
+                        }
+                    }
+
+                    .body-section{
+                        .body{
+                            font-size:1.9em;
+                            line-height:1.1em;
+                        }
+                    }
+               }
+            }
+        }
+
+        .right-section{
+            padding:1em;
+
+            .analogy-container{
+                gap:1.25em;
+            }
+
+            .title-section{
+                padding:0.2em;
+                justify-content: center;
+
+                .title{
+                    font-size:2.5em;
+                }
+            }
+
+            .body-section{
+                .body{
+                    font-size:2em;
+                    line-height:1.1em;
+                }
+            }
+
+            .button-section{
+                justify-content: center;
+                gap:0.5em;
+
+                .another-button, .return-button{
+                    button{
+                        padding:1em;
+                        font-size:1.7em;
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+@media (max-width:1024px){
+    .result-container{
+        padding:1em;
+        gap:1.5em;
+
+        .left-section{
+            gap:0.5em;
+
+            .title-section{
+                padding:0.2em;
+
+                .title{
+                    font-size:1.9em;
+                }
+            }
+
+            .definition-section{
+                padding:0.2em;
+
+                .outer-header-section{
+                    .header{
+                        font-size:1em;
+                    }
+                }
+
+                .body-section{
+                    .body{
+                        font-size:0.9em;
+                        line-height:1.1em;
+                    }
+                }
+            }
+
+            .principles-section, .application-section{
+                padding:0.1em; 
+                gap:0.2em;
+
+               .outer-header-section{
+                    .header{
+                        font-size:1em;
+                    }
+               }
+
+               .principle-uno-section, .principle-dos-section, .application-uno-section, .application-dos-section{
+                    padding:0.1em;
+                    .inner-title-section{
+                        .inner-title{
+                            font-size:1em;
+                        }
+                    }
+
+                    .body-section{
+                        .body{
+                            font-size:0.9em;
+                            line-height:1.1em;
+                        }
+                    }
+               }
+            }
+        }
+
+        .right-section{
+            gap:0.5em;
+
+            .analogy-container{
+                gap:0.45em;
+            }
+
+            .title-section{
+                padding:0.2em;
+                justify-content: center;
+
+                .title{
+                    font-size:1.9em;
+                }
+            }
+
+            .body-section{
+                .body{
+                    font-size:0.9em;
+                    line-height:1.1em;
+                }
+            }
+
+            .button-section{
+                justify-content: center;
+                gap:0.5em;
+
+                .return-button,.another-button{
+                    button{
+                        font-size:1em;
+                        padding:0.5em;
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+@media (max-width:768px){
+    .result-container{
+        padding:0.5em;
+        gap:1.5em;
+
+        .left-section{
+            padding:0.5em;
+            gap:0.5em;
+            width:100%;
+
+            .title-section{
+                padding:0.2em;
+
+                .title{
+                    font-size:1.2em;
+                }
+            }
+
+            .definition-section{
+                padding:0.25em;
+
+                .outer-header-section{
+                    .header{
+                        font-size:0.8em;
+                    }
+                }
+
+                .body-section{
+                    .body{
+                        font-size:0.7em;
+                        line-height:1em;
+                    }
+                }
+            }
+
+            .principles-section, .application-section{
+                padding:0.25em; 
+                gap:0.2em;
+
+               .outer-header-section{
+                    .header{
+                        font-size:0.8em;
+                    }
+               }
+
+               .principle-uno-section, .principle-dos-section, .application-uno-section, .application-dos-section{
+                    padding:0.25em;
+                    .inner-title-section{
+                        .inner-title{
+                            font-size:0.8em;
+                        }
+                    }
+
+                    .body-section{
+                        .body{
+                            font-size:0.7em;
+                            line-height:1em;
+                        }
+                    }
+               }
+            }
+        }
+
+        .right-section{
+            gap:0.5em;
+            width:100%;
+            padding:0.5em;
+
+            .analogy-container{
+                gap:0.45em;
+            }
+
+            .title-section{
+                padding:0.2em;
+                justify-content: center;
+
+                .title{
+                    font-size:1.2em;
+                }
+            }
+
+            .body-section{
+                .body{
+                    padding:0.2em;
+                    font-size:0.7em;
+                    line-height:1em;
+                }
+            }
+
+            .button-section{
+                justify-content: center;
+                gap:0.5em;
+
+                .return-button,.another-button{
+                    button{
+                        font-size:0.7em;
+                        padding:0.5em;
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+@media (max-width:525px){
+    .result-container{
+        flex-direction: column;
+        gap:1em;
+
+        .left-section{
+            gap:0.25em;
+            padding:0.15em;
+
+            .title-section{
+                padding:0.1em;
+            }
+
+            .definition-section{
+                padding:0.25em;
+
+                .outer-header-section{
+                    .header{
+                        font-size:0.75em;
+                    }
+                }
+
+                .body-section{
+                    .body{
+                        font-size:0.6em;
+                        line-height:0.9em;
+                    }
+                }
+            }
+
+            .principles-section, .application-section{
+                padding:0.25em; 
+                gap:0.1em;
+
+               .outer-header-section{
+                    .header{
+                        font-size:0.75em;
+                    }
+               }
+
+               .principle-uno-section, .principle-dos-section, .application-uno-section, .application-dos-section{
+                    padding:0.25em;
+                    .inner-title-section{
+                        .inner-title{
+                            font-size:0.7em;
+                        }
+                    }
+
+                    .body-section{
+                        .body{
+                            font-size:0.6em;
+                            line-height:0.9em;
+                        }
+                    }
+               }
+            }
+        }
+
+        .right-section{
+            padding:0.15em;
+            gap:0.25em;
+            justify-content: center;
+
+            .title-section{
+                padding:0.1em;
+            }
+
+            .body-section{
+                .body{
+                    padding:0.2em;
+                    font-size:0.6em;
+                    line-height:0.9em;
+                }
+            }
+
+            .button-section{
+                justify-content: center;
+                gap:0.5em;
+
+                .return-button,.another-button{
+                    button{
+                        font-size:0.3em;
+                        padding:0.5em;
+                    }
+                }
+            }
+
+        }
+    }
+}

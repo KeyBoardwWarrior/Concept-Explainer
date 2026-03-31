@@ -67,6 +67,12 @@
             background-color:transparent;
             color:var(--text-color);
             font-weight: 400;
+            border-radius:0.5em;
+            transition: color ease-in-out 500ms ;
+        }
+        
+        button:hover{
+            color:var(--secondary-color);
         }
     }
 }
@@ -78,8 +84,15 @@
         border:none;
         border-radius:20px;
         font-weight:700;
-   } 
+        transition: background-image ease-in-out 0.7s , color ease-in-out 0.7s;
+    } 
+
+    button:hover{
+        background-image:linear-gradient(180deg,var(--primary-color),var(--accent-color));
+        color:var(--secondary-color);
+    }
 }
+
 @media (max-width:2560px){
     .inputform-container{
         padding:3.5em;
@@ -110,10 +123,10 @@
             .button-group{
                 .buttons{
                     gap:2em;
+                    padding:1em;
                     button{
                         font-size:0.9em;
-                        padding:2em;
-                        cursor:pointer;
+                        padding:0.9em;
                     }
                 }
             }
@@ -159,9 +172,10 @@
             .button-group{
                 .buttons{
                     gap:2em;
+                    padding:1em;
                     button{
                         font-size:0.7em;
-                        padding:1.75em;
+                        padding:0.7em;
                     }
                 }
             }
@@ -209,9 +223,10 @@
             .button-group{
                 .buttons{
                     gap:1.75em;
+                    padding:0.5em;
                     button{
                         font-size:0.5em;
-                        padding:1.2em;
+                        padding:0.5em;
                     }
                 }
             }
@@ -260,9 +275,10 @@
             .button-group{
                 .buttons{
                     gap:1.2em;
+                    padding:0.5em;
                     button{
-                        font-size:0.4em;
-                        padding:1.2em;
+                        font-size:0.5em;
+                        padding:0.5em;
                     }
                 }
             }

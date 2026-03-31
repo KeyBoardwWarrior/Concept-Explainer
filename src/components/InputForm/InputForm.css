@@ -1,0 +1,279 @@
+.inputform-container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--primary-font);
+    color:var(--text-color);
+    background-color: var(--surface-color);
+    border-radius:0.45em;
+}
+
+.concept-input-container, .level-selector-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.concept-input{
+    display:flex;
+}
+
+.border-wrapper{
+    display:flex;
+    justify-content: center;
+    background-image: linear-gradient(90deg,var(--primary-color),var(--accent-color));
+    padding:1px;
+    border-radius: 0.15em;
+}
+
+#input{
+    border:none;
+    border-radius: 0.15em;
+    background-color:#0B0F19; 
+    color:var(--font-color);
+    font-family: var(--primary-font);
+}
+
+#input:focus{
+    outline:none;
+}
+
+#input:placeholder-shown{
+    font-weight:500;
+}
+
+
+.button-group-container{
+    display:flex;
+}
+
+.button-border-wrapper{
+    display:flex;
+    justify-content: center;
+    background-image: linear-gradient(90deg,var(--primary-color),var(--accent-color));
+    padding:1px;
+    border-radius: 0.5em;
+}
+
+.button-group{
+    display: flex;
+    background-color:#0B0F19; 
+    border-radius: 0.5em;
+
+    .buttons{
+        display: flex;
+
+        button{
+            border:none;
+            background-color:transparent;
+            color:var(--text-color);
+            font-weight: 400;
+        }
+    }
+}
+
+.submit-button{
+    button{
+        color:var(--text-color);
+        background-image:linear-gradient(90deg,var(--primary-color),var(--accent-color));
+        border:none;
+        border-radius:20px;
+        font-weight:700;
+   } 
+}
+@media (max-width:2560px){
+    .inputform-container{
+        padding:3.5em;
+        gap:2em;
+    } 
+
+    .concept-input-container{
+        gap:0.4em;
+        p{
+            font-size:0.9em;
+        }
+    }
+
+    #input, #input:placeholder-shown{
+        font-size: 2em;
+    }
+
+    .level-selector-container{
+        gap:0.4em;
+
+        .level-selector-label{
+            p{
+                font-size:0.9em;
+            }
+        }
+
+        .button-group-container{
+            .button-group{
+                .buttons{
+                    gap:2em;
+                    button{
+                        font-size:0.9em;
+                        padding:2em;
+                        cursor:pointer;
+                    }
+                }
+            }
+        }
+    }
+
+    .submit-button{
+        button{
+            cursor:pointer;
+            padding:1.25em;
+            font-size:0.9em;
+        }
+    }
+}
+
+@media (max-width:1024px) {
+    .inputform-container{
+        padding:2.5em;
+        gap:1em;
+    }
+
+    .concept-input-container{
+        gap:0.3em;
+        p{
+            font-size:0.7em;
+        }
+    }
+
+    #input, #input:placeholder-shown{
+        font-size: 1.5em;
+    }
+
+    .level-selector-container{
+        gap:0.3em;
+
+        .level-selector-label{
+            p{
+                font-size:0.7em;
+            }
+        }
+
+        .button-group-container{
+            .button-group{
+                .buttons{
+                    gap:2em;
+                    button{
+                        font-size:0.7em;
+                        padding:1.75em;
+                    }
+                }
+            }
+        }
+    }
+
+    .submit-button{
+        button{
+            padding:1.5em;
+            font-size:0.7em;
+        }
+    }
+}
+
+@media (max-width:768px){
+    .inputform-container{
+        padding:1.5em;
+        gap:0.7em;
+    }
+
+    .concept-input-container{
+        gap:0.2em;
+
+        .concept-label{
+            p{
+                font-size:0.5em;
+            }
+        }
+        
+    }
+    #input, #input:placeholder-shown{
+        font-size:0.95em;
+    }
+
+    .level-selector-container{
+        gap:0.2em;
+
+        .level-selector-label{
+            p{
+                font-size:0.5em;
+            }
+        }
+
+        .button-group-container{
+            .button-group{
+                .buttons{
+                    gap:1.75em;
+                    button{
+                        font-size:0.5em;
+                        padding:1.2em;
+                    }
+                }
+            }
+        }
+    }
+
+    .submit-button{
+        button{
+            padding:0.9em;
+            font-size:0.5em;
+        }
+    }
+
+}
+
+@media (max-width:525px){
+    .inputform-container{
+        padding:1em;
+        gap:0.6em;
+    }
+
+    .concept-input-container{
+        gap:0.1em;
+
+        .concept-label{
+            p{
+                font-size:0.1em;
+            }
+        }
+    }
+
+    #input, #input:placeholder-shown{
+        font-size:0.75em;
+    }
+
+    .level-selector-container{
+        gap:0.1em;
+
+        .level-selector-label{
+            p{
+                font-size:0.1em;
+            }
+        }
+
+        .button-group-container{
+            .button-group{
+                .buttons{
+                    gap:1.2em;
+                    button{
+                        font-size:0.4em;
+                        padding:1.2em;
+                    }
+                }
+            }
+        }
+    }
+
+    .submit-button{
+        button{
+            padding:0.7em;
+            font-size:0.5em;
+        }
+    }
+
+}

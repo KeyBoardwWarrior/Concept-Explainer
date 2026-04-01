@@ -2,9 +2,27 @@ import "./Main.css";
 import InputForm from "../InputForm/InputForm";
 import Footer from "../Footer/Footer";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 function Main(){
-    const [buttonVal,setButtonVal] = useState(1);
+    const navigate = useNavigate();
+    const [level,setLevel] = useState('beginner');
+    const [concept, setConcept] = useState("");
+
+
+    const handleSubmit = async () => {
+        if(concept === "") {alert("Empty Field"); return;}
+        const res = await fetch("/api/explain",{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json",
+            },
+            body:JSON.stringify({concept,level}),
+        });
+
+        const data = await res.json();
+        navigate("/result",{state:{concept,data}});
+    }
     return(
         <>
             <div className="main-container">
@@ -23,7 +41,7 @@ function Main(){
                     </div> 
 
                     <div className="input-container">
-                        <InputForm currentVal={buttonVal} setButtonVal={setButtonVal}/>
+                        <InputForm currentLevel={level} setCurrentLevel={setLevel} setConcept={setConcept} handleSubmit={handleSubmit}/>
                     </div>
 
             </div> 

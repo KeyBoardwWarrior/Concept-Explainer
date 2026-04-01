@@ -1,7 +1,11 @@
 import './Result.css';
 import Header from '../../components/Header/Header';
+import { useNavigate } from 'react-router';
+import { useLocation } from "react-router"
 
 function Result(){
+    const navigate = useNavigate()
+    const {state} = useLocation();
     return(
         <>
             <Header />
@@ -10,7 +14,7 @@ function Result(){
                     {/* title-section */}
                     <div className="title-section">
                         <div className="title">
-                            <p>Quantum Entanglement</p> 
+                            <p>{state.concept}</p> 
                         </div>   
                     </div>
 
@@ -24,7 +28,7 @@ function Result(){
                         
                         <div className="body-section">
                             <div className="body">
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga, ratione. Adipisci cum dolor nemo tenetur tempore quia natus saepe molestias quo, harum necessitatibus non at earum. Rem perspiciatis ea fugiat?</p> 
+                            <p>{state.data.definition}</p>
                             </div> 
                         </div>
                     </div>
@@ -37,27 +41,31 @@ function Result(){
                             </div>
                         </div>
                         <div className="principle-uno-section">
-                            <div className="inner-title-section">
+                            {/* <div className="inner-title-section">
                                 <div className="inner-title">
-                                    <p>Non Locality</p>
+                                    <p>1</p>
                                 </div>
-                            </div>
+                            </div> */}
                             <div className="body-section">
                                 <div className="body">
-                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga, ratione. Adipisci cum dolor nemo tenetur tempore quia natus saepe molestias quo, harum necessitatibus non at earum. Rem perspiciatis ea fugiat?</p> 
+                                    <p>
+                                        {state.data.principles[0]}
+                                    </p>
                                 </div> 
                             </div>
                         </div>
 
                         <div className="principle-dos-section">
-                            <div className="inner-title-section">
+                            {/* <div className="inner-title-section">
                                 <div className="inner-title">
-                                    <p>Non Locality</p>
+                                    <p>2</p>
                                 </div>
-                            </div>
+                            </div> */}
                             <div className="body-section">
                                 <div className="body">
-                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga, ratione. Adipisci cum dolor nemo tenetur tempore quia natus saepe molestias quo, harum necessitatibus non at earum. Rem perspiciatis ea fugiat?</p> 
+                                    <p>
+                                        {state.data.principles[1]}
+                                    </p>
                                 </div> 
                             </div>
                         </div>
@@ -71,27 +79,31 @@ function Result(){
                             </div>
                         </div>
                         <div className="application-uno-section">
-                            <div className="inner-title-section">
+                            {/* <div className="inner-title-section">
                                 <div className="inner-title">
-                                    <p>Quantum Cryptography</p>
+                                    <p>1</p>
                                 </div>
-                            </div>
+                            </div> */}
                             <div className="body-section">
                                 <div className="body">
-                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga, ratione. Adipisci cum dolor nemo tenetur tempore quia natus saepe molestias quo, harum necessitatibus non at earum. Rem perspiciatis ea fugiat?</p> 
+                                    <p>
+                                        {state.data.applications[0]} 
+                                    </p>
                                 </div> 
                             </div>
                         </div>
 
                         <div className="application-dos-section">
-                            <div className="inner-title-section">
+                            {/* <div className="inner-title-section">
                                 <div className="inner-title">
-                                    <p>Quantum Cryptography</p>
+                                    <p>2</p>
                                 </div>
-                            </div>
+                            </div> */}
                             <div className="body-section">
                                 <div className="body">
-                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga, ratione. Adipisci cum dolor nemo tenetur tempore quia natus saepe molestias quo, harum necessitatibus non at earum. Rem perspiciatis ea fugiat?</p> 
+                                    <p>
+                                        {state.data.applications[1]} 
+                                    </p>
                                 </div> 
                             </div>
                         </div>
@@ -108,7 +120,9 @@ function Result(){
 
                         <div className="body-section">
                             <div className="body">
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia, assumenda inventore! Exercitationem quasi aliquam molestiae optio voluptates officiis dolore expedita, nesciunt est inventore incidunt, et iusto dolorem dolores, earum unde ipsum impedit modi provident doloribus magni. Consequuntur, quisquam! Quibusdam quidem veritatis at voluptatem? Assumenda similique placeat sed incidunt soluta cupiditate possimus rem asperiores quia, adipisci fuga dicta. Porro eos quod incidunt ipsum quia totam, necessitatibus, fugiat neque quidem eum aliquam quas repudiandae numquam facere quisquam repellat laudantium consequatur iusto cupiditate illum debitis impedit. Cum perferendis et quisquam, hic excepturi labore possimus laudantium molestiae, alias, dolorem quod impedit quam ipsum. Doloribus?</p>
+                                <p>
+                                    {state.data.analogy}
+                                </p>
                             </div> 
                         </div>
 
@@ -117,7 +131,7 @@ function Result(){
                                 <button>Try Another Analogy</button> 
                             </div> 
                             <div className="return-button">
-                                <button>New Analysis</button> 
+                                <button onClick={() => navigate('/')}>New Analysis</button> 
                             </div> 
                         </div>
                     </div> 

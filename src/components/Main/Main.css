@@ -25,7 +25,6 @@
 .body-text{
     font-family: var(--primary-font);
 }
-
 @media (max-width:2560px) {
     .main-container{
         padding:8.4em;

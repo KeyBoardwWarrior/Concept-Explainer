@@ -10,18 +10,9 @@ function Main(){
     const [concept, setConcept] = useState("");
 
 
-    const handleSubmit = async () => {
+    const handleSubmit = () => {
         if(concept === "") {alert("Empty Field"); return;}
-        const res = await fetch("/api/explain",{
-            method:"POST",
-            headers:{
-                "Content-Type":"application/json",
-            },
-            body:JSON.stringify({concept,level}),
-        });
-
-        const data = await res.json();
-        navigate("/result",{state:{concept,data}});
+        navigate('/loading',{state:{concept,level}});
     }
     return(
         <>

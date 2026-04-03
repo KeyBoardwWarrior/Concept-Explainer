@@ -7,13 +7,10 @@ dotenv.config();
 
 const app = express();
 
-// 🔹 Middleware
 app.use(cors());
 app.use(json());
 
-// 🔹 API Route
 app.post("/api/explain", async (req, res) => {
-    console.log("API HIT");
   try {
     const { concept, level } = req.body;
 
@@ -23,26 +20,24 @@ app.post("/api/explain", async (req, res) => {
       });
     }
 
-    // 🔹 Prompt to control AI output
     const prompt = `
-Explain the concept "${concept}" for a ${level} learner.
+      Explain the concept "${concept}" for a ${level} learner.
 
-Return ONLY valid JSON in this format:
-{
-  "definition": "...",
-  "principles": ["...", "..."],
-  "applications": ["...", "..."],
-  "analogy": "..."
-}
+      Return ONLY valid JSON in this format:
+      {
+        "definition": "...",
+        "principles": ["...", "..."],
+        "applications": ["...", "..."],
+        "analogy": "..."
+      }
 
-Rules:
-- Exactly 2 principles
-- Exactly 2 applications
-- STRICT: Return ONLY raw JSON (no markdown, no explanation)
-- Keep explanation appropriate for ${level}
-`;
+      Rules:
+      - Exactly 2 principles
+      - Exactly 2 applications
+      - STRICT: Return ONLY raw JSON (no markdown, no explanation)
+      - Keep explanation appropriate for ${level}
+      `;
 
-    // 🔹 Call OpenRouter API
     const response = await fetch(
       "https://openrouter.ai/api/v1/chat/completions",
       {
@@ -64,8 +59,8 @@ Rules:
     );
 
     const data = await response.json();
+    console.log(data);
 
-    // 🔹 Extract AI response
     const text = data.choices?.[0]?.message?.content;
 
     if (!text) {
@@ -75,7 +70,7 @@ Rules:
       });
     }
 
-    // 🔹 Clean & parse JSON
+    console.log(text);
     let parsed;
     try {
       const cleaned = text.replace(/```json|```/g, "").trim();
@@ -97,7 +92,6 @@ Rules:
       });
     }
 
-    // 🔹 Send clean data to frontend
     res.json(parsed);
 
   } catch (error) {
@@ -108,12 +102,10 @@ Rules:
   }
 });
 
-// 🔹 Test route (optional)
 app.get("/", (req, res) => {
   res.send("Backend is running");
 });
 
-// 🔹 Start server
 const PORT = 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

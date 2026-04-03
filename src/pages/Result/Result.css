@@ -14,6 +14,7 @@ button{
 
         .title-section{
             display:flex;
+            flex-wrap:wrap;
 
             .title{
                 font-family: var(--heading-font);
@@ -44,7 +45,7 @@ button{
 
                 .body{
                     color:var(--text-color);
-                    font-weight:400;
+                    font-weight:300;
                 }
             }
         }
@@ -86,7 +87,7 @@ button{
 
                     .body{
                         color:var(--text-color);
-                        font-weight:400;
+                        font-weight:300;
                     }
                 }
             }
@@ -124,7 +125,7 @@ button{
 
                 .body{
                     color:var(--text-color);
-                    font-weight: 400;
+                    font-weight: 300;
                 }
             }
 
@@ -140,6 +141,108 @@ button{
                     border-radius:0.5em;
                 }
             }
+        }
+    }
+}
+
+@media (min-width:2560px){
+    .result-container{
+        padding:25em;
+        gap:1.5em;
+
+        .left-section{
+            padding:0.5em;
+            gap:0.5em;
+
+            .title-section{
+                padding:0.5em;
+
+                .title{
+                    font-size:10em;
+                }
+            }
+
+            .definition-section{
+                padding:0.5em;
+
+                .outer-header-section{
+                    .header{
+                        font-size:5em;
+                    }
+                }
+
+                .body-section{
+                    .body{
+                        font-size:3em;
+                        line-height:1.1em;
+                    }
+                }
+            }
+
+            .principles-section, .application-section{
+                padding:0.5em; 
+                gap:0.6em;
+
+               .outer-header-section{
+                    .header{
+                        font-size:5em;
+                    }
+               }
+
+               .principle-uno-section, .principle-dos-section, .application-uno-section, .application-dos-section{
+                    padding:0.5em;
+                    gap:0.5em;
+                    .inner-title-section{
+                        .inner-title{
+                            font-size:2.25em;
+                        }
+                    }
+
+                    .body-section{
+                        .body{
+                            font-size:3em;
+                            line-height:1.1em;
+                        }
+                    }
+               }
+            }
+        }
+
+        .right-section{
+            padding:1em;
+
+            .analogy-container{
+                gap:1.25em;
+            }
+
+            .title-section{
+                padding:0.2em;
+                justify-content: center;
+
+                .title{
+                    font-size:10em;
+                }
+            }
+
+            .body-section{
+                .body{
+                    font-size:3em;
+                    line-height:1.1em;
+                }
+            }
+
+            .button-section{
+                justify-content: center;
+                gap:0.5em;
+
+                .another-button, .return-button{
+                    button{
+                        padding:1em;
+                        font-size:1.7em;
+                    }
+                }
+            }
+
         }
     }
 }

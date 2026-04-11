@@ -13,6 +13,7 @@ app.use(json());
 app.post("/api/explain", async (req, res) => {
   try {
     const { concept, level } = req.body;
+    console.log({concept,level});
 
     if (!concept || !level) {
       return res.status(400).json({
@@ -47,7 +48,7 @@ app.post("/api/explain", async (req, res) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          model: "minimax/minimax-m2.5:free",
+          model: "nvidia/nemotron-3-super-120b-a12b:free", //"minimax/minimax-m2.5:free"
           messages: [
             {
               role: "user",
@@ -59,7 +60,6 @@ app.post("/api/explain", async (req, res) => {
     );
 
     const data = await response.json();
-    console.log(data);
 
     const text = data.choices?.[0]?.message?.content;
 
@@ -70,7 +70,6 @@ app.post("/api/explain", async (req, res) => {
       });
     }
 
-    console.log(text);
     let parsed;
     try {
       const cleaned = text.replace(/```json|```/g, "").trim();

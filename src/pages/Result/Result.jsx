@@ -127,9 +127,9 @@ function Result(){
                         </div>
 
                         <div className="button-section">
-                            <div className="another-button">
+                            {/* <div className="another-button">
                                 <button>Try Another Analogy</button> 
-                            </div> 
+                            </div>  */}
                             <div className="return-button">
                                 <button onClick={() => navigate('/')}>New Analysis</button> 
                             </div> 

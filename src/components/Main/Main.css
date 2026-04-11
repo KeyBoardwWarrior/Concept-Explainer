@@ -1,4 +1,5 @@
 .main-container{
+    height:auto;
     display:flex;
     justify-content: center;
     align-items: center;
@@ -25,10 +26,11 @@
 .body-text{
     font-family: var(--primary-font);
 }
+
 @media (max-width:2560px) {
     .main-container{
-        padding:8.4em;
-        gap:2em;
+        padding:11em;
+        gap:2.5em;
     }
 
     .left-side{

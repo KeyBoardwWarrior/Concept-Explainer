@@ -4,16 +4,31 @@ import Footer from "../Footer/Footer";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
-function Main(){
+function Main({modal,setModal}){
     const navigate = useNavigate();
     const [level,setLevel] = useState('beginner');
     const [concept, setConcept] = useState("");
 
-
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if(concept === "") {alert("Empty Field"); return;}
-        navigate('/loading',{state:{concept,level}});
+        try{
+            setModal(modal);
+            const res = await fetch("/api/explain",{
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json",
+                },
+                body:JSON.stringify({concept,level}),
+            });
+
+            const data = await res.json();
+            setModal(modal);
+            navigate("/result",{state:{data,concept}});
+        }catch(err){
+            console.error(err);
+        }
     }
+
     return(
         <>
             <div className="main-container">

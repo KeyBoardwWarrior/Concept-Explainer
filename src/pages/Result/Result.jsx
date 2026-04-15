@@ -114,7 +114,7 @@ function Result(){
                     <div className="analogy-container">
                         <div className="title-section">
                             <div className="title">
-                                <p>Analogy Generator</p> 
+                                <p>ANALOGY</p> 
                             </div>
                         </div> 
 

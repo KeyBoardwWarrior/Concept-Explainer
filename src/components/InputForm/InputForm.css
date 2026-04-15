@@ -93,7 +93,7 @@
         color:var(--secondary-color);
     }
 }
-@media (min-width:2559px){
+/* @media (min-width:2559px){
     .inputform-container{
         padding:9.5em;
         gap:5em;
@@ -146,7 +146,7 @@
             font-size:2.5em;
         }
     }
-}
+} */
 @media (max-width:2560px){
     .inputform-container{
         padding:3.5em;

@@ -4,28 +4,34 @@ import Footer from "../Footer/Footer";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
-function Main({modal,setModal}){
+function Main({isLoading, setIsLoading}){
     const navigate = useNavigate();
     const [level,setLevel] = useState('beginner');
     const [concept, setConcept] = useState("");
 
     const handleSubmit = async () => {
-        if(concept === "") {alert("Empty Field"); return;}
+        if(concept.trim() === "") {alert("Please enter a concept"); return;}
         try{
-            setModal(modal);
+            setIsLoading(true);
             const res = await fetch("/api/explain",{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json",
                 },
-                body:JSON.stringify({concept,level}),
+                body:JSON.stringify({concept: concept.trim(), level}),
             });
 
+            if (!res.ok) {
+                throw new Error("Failed to deconstruct concept. Please try again.");
+            }
+
             const data = await res.json();
-            setModal(modal);
-            navigate("/result",{state:{data,concept}});
+            navigate("/result",{state:{data,concept: concept.trim(), level}});
         }catch(err){
             console.error(err);
+            alert(err.message || "An error occurred while fetching details.");
+        }finally{
+            setIsLoading(false);
         }
     }
 

@@ -6,12 +6,14 @@ function Header(){
                 <div className="header-container">
                     <div className="header-logo-container">
                         <Link to="/">
-                            <p className="logo">Curator AI</p>
+                            <span className="logo">Curator AI</span>
+                            <span className="logo-dot">.</span>
                         </Link>
                     </div> 
                 </div>
             </>
         );
 }
+
 
 export default Header;

@@ -1,0 +1,167 @@
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(11, 15, 25, 0.7);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeInOverlay 0.3s ease-out;
+}
+
+.loading-card {
+    background-color: rgba(17, 24, 39, 0.85);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 1.5em;
+    padding: 3.5em 3em;
+    width: 90%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(59, 130, 246, 0.1);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.spinner-container {
+    margin-bottom: 2em;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.glowing-spinner {
+    width: 6em;
+    height: 6em;
+    border-radius: 50%;
+    background-image: linear-gradient(135deg, var(--primary-color), var(--accent-color), #ffffff);
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: spinSpinner 1.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+    box-shadow: 0 0 25px rgba(34, 211, 238, 0.4);
+}
+
+.spinner-inner {
+    width: 100%;
+    height: 100%;
+    background-color: #0B0F19;
+    border-radius: 50%;
+}
+
+.loading-text-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
+    margin-bottom: 2em;
+    min-height: 5.5em; /* Prevents layout shifting during text changes */
+    justify-content: center;
+}
+
+.loading-title {
+    font-family: var(--heading-font);
+    font-size: 1.8em;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: transparent;
+    background-image: linear-gradient(90deg, #ffffff, var(--accent-color));
+    background-clip: text;
+    -webkit-background-clip: text;
+    margin: 0;
+}
+
+.loading-status {
+    font-family: var(--primary-font);
+    font-size: 0.95em;
+    font-weight: 500;
+    color: var(--secondary-color);
+    line-height: 1.5;
+    margin: 0;
+    animation: pulseText 2.2s infinite ease-in-out;
+}
+
+/* Subtle continuous progress fill */
+.progress-bar-track {
+    width: 100%;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 2px;
+    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background-image: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    width: 0%;
+    animation: progressFill linear infinite;
+}
+
+/* Animations */
+@keyframes fadeInOverlay {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes spinSpinner {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulseText {
+    0%, 100% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 1;
+        color: #ffffff;
+    }
+}
+
+@keyframes progressFill {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .loading-card {
+        padding: 2.5em 2em;
+        max-width: 320px;
+    }
+    .glowing-spinner {
+        width: 5em;
+        height: 5em;
+    }
+    .loading-title {
+        font-size: 1.5em;
+    }
+    .loading-status {
+        font-size: 0.85em;
+    }
+}

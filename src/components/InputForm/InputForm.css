@@ -1,349 +1,227 @@
-.inputform-container{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: var(--primary-font);
-    color:var(--text-color);
-    background-color: var(--surface-color);
-    border-radius:0.45em;
-}
-
-.concept-input-container, .level-selector-container{
+.inputform-container {
     display: flex;
     flex-direction: column;
-}
-
-.concept-input{
-    display:flex;
-}
-
-.border-wrapper{
-    display:flex;
-    justify-content: center;
-    background-image: linear-gradient(90deg,var(--primary-color),var(--accent-color));
-    padding:1px;
-    border-radius: 0.15em;
-}
-
-#input{
-    padding:0.1em;
-    border:none;
-    border-radius: 0.15em;
-    background-color:#0B0F19; 
-    color:var(--font-color);
+    align-items: stretch;
+    width: 100%;
+    padding: 2.5rem;
     font-family: var(--primary-font);
+    color: var(--text-color);
+    background-color: rgba(17, 24, 39, 0.7);
+    border: 1px solid rgba(59, 130, 246, 0.15);
+    border-radius: 1.25em;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3),
+                0 0 30px rgba(59, 130, 246, 0.03);
+    gap: 2.2rem;
+    transition: all 0.3s ease;
 }
 
-#input:focus{
-    outline:none;
+.inputform-container:hover {
+    border-color: rgba(59, 130, 246, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35),
+                0 0 35px rgba(59, 130, 246, 0.07);
 }
 
-#input:placeholder-shown{
-    font-weight:500;
-}
-
-
-.button-group-container{
-    display:flex;
-}
-
-.button-border-wrapper{
-    display:flex;
-    justify-content: center;
-    background-image: linear-gradient(90deg,var(--primary-color),var(--accent-color));
-    padding:1px;
-    border-radius: 0.5em;
-}
-
-.button-group{
+.concept-input-container, .level-selector-container {
     display: flex;
-    background-color:#0B0F19; 
-    border-radius: 0.5em;
+    flex-direction: column;
+    gap: 0.7rem;
+}
 
-    .buttons{
+.concept-label, .level-selector-label {
+    p {
+        font-family: var(--heading-font);
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--secondary-color);
+    }
+}
+
+.border-wrapper {
+    position: relative;
+    padding: 1px;
+    background-image: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    border-radius: 0.75em;
+    transition: all 0.3s ease;
+}
+
+.border-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    border-radius: 0.75em;
+    z-index: -1;
+    opacity: 0;
+    filter: blur(8px);
+    transition: opacity 0.3s ease;
+}
+
+.border-wrapper:focus-within {
+    transform: translateY(-1px);
+}
+
+.border-wrapper:focus-within::after {
+    opacity: 0.5;
+}
+
+#input {
+    width: 100%;
+    padding: 1.1rem 1.3rem;
+    border: none;
+    border-radius: 0.73em;
+    background-color: #0B0F19; 
+    color: var(--text-color);
+    font-family: var(--primary-font);
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+#input:focus {
+    outline: none;
+    background-color: rgba(11, 15, 25, 0.85);
+}
+
+#input::placeholder {
+    color: #4b5563;
+    font-weight: 400;
+}
+
+.button-group-container {
+    width: 100%;
+}
+
+.button-border-wrapper {
+    padding: 1px;
+    background-image: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    border-radius: 0.75em;
+    width: 100%;
+}
+
+.button-group {
+    background-color: #0B0F19; 
+    border-radius: 0.73em;
+    width: 100%;
+    overflow: hidden;
+
+    .buttons {
         display: flex;
+        width: 100%;
 
-        button{
-            border:none;
-            background-color:transparent;
-            color:var(--text-color);
-            font-weight: 400;
-            border-radius:0.5em;
-            transition: color ease-in-out 500ms ;
+        button {
+            flex: 1;
+            border: none;
+            background-color: transparent;
+            color: var(--secondary-color);
+            font-family: var(--primary-font);
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 1rem 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
         }
         
-        button:hover{
-            color:var(--secondary-color);
+        button:hover {
+            color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+
+        /* Active styling gets standard primary-color variable */
+        button[style*="background-color: var(--primary-color)"] {
+            color: #ffffff !important;
+            font-weight: 700;
+            background-image: linear-gradient(135deg, var(--primary-color), rgba(59, 130, 246, 0.85)) !important;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
         }
     }
 }
 
-.submit-button{
-    button{
-        color:var(--text-color);
-        background-image:linear-gradient(90deg,var(--primary-color),var(--accent-color));
-        border:none;
-        border-radius:20px;
-        font-weight:700;
-        transition: background-image ease-in-out 0.7s , color ease-in-out 0.7s;
+.submit-button-container {
+    margin-top: 0.5rem;
+}
+
+.submit-button {
+    width: 100%;
+
+    button {
+        width: 100%;
+        color: #ffffff;
+        background-image: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        border: none;
+        border-radius: 0.75em;
+        padding: 1.2rem;
+        font-family: var(--heading-font);
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        cursor: pointer;
+        box-shadow: 0 6px 20px rgba(59, 130, 246, 0.25);
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     } 
 
-    button:hover{
-        background-image:linear-gradient(180deg,var(--primary-color),var(--accent-color));
-        color:var(--secondary-color);
-    }
-}
-/* @media (min-width:2559px){
-    .inputform-container{
-        padding:9.5em;
-        gap:5em;
-    } 
-
-    .concept-input-container{
-        gap:0.4em;
-        p{
-            font-size:5em;
-        }
+    button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(34, 211, 238, 0.4);
+        filter: brightness(1.1);
     }
 
-    #input, #input:placeholder-shown{
-        font-size: 8em;
-    }
-
-    .level-selector-container{
-        gap:0.4em;
-
-        .level-selector-label{
-            p{
-                font-size:5em;
-            }
-        }
-
-        .button-border-wrapper{
-            padding:0.5em;
-            border-radius:1.5em;
-        }
-
-        .button-group-container{
-            .button-group{
-                border-radius:1.5em;
-                .buttons{
-                    gap:2em;
-                    padding:5em;
-                    button{
-                        font-size:3em;
-                        padding:1.5em;
-                    }
-                }
-            }
-        }
-    }
-
-    .submit-button{
-        button{
-            cursor:pointer;
-            padding:1.25em;
-            font-size:2.5em;
-        }
-    }
-} */
-@media (max-width:2560px){
-    .inputform-container{
-        padding:3.5em;
-        gap:2em;
-    } 
-
-    .concept-input-container{
-        gap:0.4em;
-        p{
-            font-size:0.9em;
-        }
-    }
-
-    #input, #input:placeholder-shown{
-        font-size: 2em;
-    }
-
-    .level-selector-container{
-        gap:0.4em;
-
-        .level-selector-label{
-            p{
-                font-size:0.9em;
-            }
-        }
-
-        .button-group-container{
-            .button-group{
-                .buttons{
-                    gap:2em;
-                    padding:1em;
-                    button{
-                        font-size:0.9em;
-                        padding:0.9em;
-                    }
-                }
-            }
-        }
-    }
-
-    .submit-button{
-        button{
-            cursor:pointer;
-            padding:1.25em;
-            font-size:0.9em;
-        }
+    button:active {
+        transform: translateY(0);
+        box-shadow: 0 4px 10px rgba(59, 130, 246, 0.2);
     }
 }
 
-@media (max-width:1024px) {
-    .inputform-container{
-        padding:2.5em;
-        gap:1em;
+/* Responsiveness for all screen sizes */
+@media (max-width: 768px) {
+    .inputform-container {
+        padding: 2rem;
+        gap: 1.8rem;
     }
 
-    .concept-input-container{
-        gap:0.3em;
-        p{
-            font-size:0.7em;
-        }
+    #input {
+        padding: 1rem;
+        font-size: 0.95rem;
     }
 
-    #input, #input:placeholder-shown{
-        font-size: 1.5em;
+    .button-group .buttons button {
+        padding: 0.9rem 0.3rem;
+        font-size: 0.85rem;
     }
 
-    .level-selector-container{
-        gap:0.3em;
-
-        .level-selector-label{
-            p{
-                font-size:0.7em;
-            }
-        }
-
-        .button-group-container{
-            .button-group{
-                .buttons{
-                    gap:2em;
-                    padding:1em;
-                    button{
-                        font-size:0.7em;
-                        padding:0.7em;
-                    }
-                }
-            }
-        }
-    }
-
-    .submit-button{
-        button{
-            padding:1.5em;
-            font-size:0.7em;
-        }
+    .submit-button button {
+        padding: 1rem;
+        font-size: 0.95rem;
     }
 }
 
-@media (max-width:768px){
-    .inputform-container{
-        padding:1.5em;
-        gap:0.7em;
+@media (max-width: 480px) {
+    .inputform-container {
+        padding: 1.5rem 1.25rem;
+        gap: 1.5rem;
+        border-radius: 1rem;
     }
 
-    .concept-input-container{
-        gap:0.2em;
-
-        .concept-label{
-            p{
-                font-size:0.5em;
-            }
-        }
-        
-    }
-    #input, #input:placeholder-shown{
-        font-size:0.95em;
+    .concept-label p, .level-selector-label p {
+        font-size: 0.8rem;
     }
 
-    .level-selector-container{
-        gap:0.2em;
-
-        .level-selector-label{
-            p{
-                font-size:0.5em;
-            }
-        }
-
-        .button-group-container{
-            .button-group{
-                .buttons{
-                    gap:1.75em;
-                    padding:0.5em;
-                    button{
-                        font-size:0.5em;
-                        padding:0.5em;
-                    }
-                }
-            }
-        }
+    #input {
+        padding: 0.9rem;
+        font-size: 0.9rem;
     }
 
-    .submit-button{
-        button{
-            padding:0.9em;
-            font-size:0.5em;
-        }
+    /* Wrap buttons on very narrow screens if necessary, or just decrease padding */
+    .button-group .buttons button {
+        padding: 0.85rem 0.2rem;
+        font-size: 0.8rem;
     }
 
-}
-
-@media (max-width:525px){
-    .inputform-container{
-        padding:1em;
-        gap:0.6em;
+    .submit-button button {
+        padding: 0.9rem;
+        font-size: 0.9rem;
     }
-
-    .concept-input-container{
-        gap:0.1em;
-
-        .concept-label{
-            p{
-                font-size:0.1em;
-            }
-        }
-    }
-
-    #input, #input:placeholder-shown{
-        font-size:0.75em;
-    }
-
-    .level-selector-container{
-        gap:0.1em;
-
-        .level-selector-label{
-            p{
-                font-size:0.1em;
-            }
-        }
-
-        .button-group-container{
-            .button-group{
-                .buttons{
-                    gap:1.2em;
-                    padding:0.5em;
-                    button{
-                        font-size:0.5em;
-                        padding:0.5em;
-                    }
-                }
-            }
-        }
-    }
-
-    .submit-button{
-        button{
-            padding:0.7em;
-            font-size:0.5em;
-        }
-    }
-
 }

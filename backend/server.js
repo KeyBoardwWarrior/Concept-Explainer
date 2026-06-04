@@ -64,7 +64,8 @@ function parseRobustJson(text) {
   }
   
   if (!jsonBlock) {
-    throw new Error("No matching closing curly brace '}' found in response.");
+    console.warn("Outermost JSON brace mismatch. Attempting to repair text from opening brace to end.");
+    jsonBlock = text.slice(start);
   }
   
   try {

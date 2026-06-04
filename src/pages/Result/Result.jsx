@@ -1,11 +1,54 @@
 import './Result.css';
 import Header from '../../components/Header/Header';
 import { useNavigate } from 'react-router';
-import { useLocation } from "react-router"
+import { useLocation } from "react-router";
+import { useState, useEffect } from "react";
+import { updateHistoryAnalogy } from '../../utils/history';
 
 function Result(){
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const {state} = useLocation();
+    const [analogy, setAnalogy] = useState(state?.data?.analogy || "");
+    const [isGenerating, setIsGenerating] = useState(false);
+
+    // Sync state when location changes (e.g. clicking a history item while on Result page)
+    useEffect(() => {
+        setAnalogy(state?.data?.analogy || "");
+    }, [state?.concept, state?.level, state?.data?.analogy]);
+
+    const handleGenerateNewAnalogy = async () => {
+        if (isGenerating) return;
+        try {
+            setIsGenerating(true);
+            const res = await fetch("/api/analogy", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    concept: state?.concept,
+                    level: state?.level || "beginner"
+                }),
+            });
+
+            if (!res.ok) {
+                throw new Error("Failed to generate a new analogy. Please try again.");
+            }
+
+            const data = await res.json();
+            if (data.analogy) {
+                setAnalogy(data.analogy);
+                updateHistoryAnalogy(state?.concept, state?.level || "beginner", data.analogy);
+            } else {
+                throw new Error("No analogy returned from server.");
+            }
+        } catch (err) {
+            console.error(err);
+            alert(err.message || "An error occurred while generating a new analogy.");
+        } finally {
+            setIsGenerating(false);
+        }
+    };
     return(
         <>
             <Header />
@@ -119,19 +162,21 @@ function Result(){
                         </div> 
 
                         <div className="body-section">
-                            <div className="body">
+                            <div className={`body ${isGenerating ? 'loading-analogy' : ''}`}>
                                 <p>
-                                    {state.data.analogy}
+                                    {analogy}
                                 </p>
                             </div> 
                         </div>
 
                         <div className="button-section">
-                            {/* <div className="another-button">
-                                <button>Try Another Analogy</button> 
-                            </div>  */}
+                            <div className="another-button">
+                                <button onClick={handleGenerateNewAnalogy} disabled={isGenerating}>
+                                    {isGenerating ? "Synthesizing..." : "Try Another Analogy"}
+                                </button> 
+                            </div> 
                             <div className="return-button">
-                                <button onClick={() => navigate('/')}>New Analysis</button> 
+                                <button onClick={() => navigate('/')} disabled={isGenerating}>New Analysis</button> 
                             </div> 
                         </div>
                     </div> 

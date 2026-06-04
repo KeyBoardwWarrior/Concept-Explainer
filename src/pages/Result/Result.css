@@ -1,647 +1,353 @@
-button{
-    cursor:pointer;
+.result-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    align-items: stretch;
+    justify-content: center;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    /* background-image: radial-gradient(circle at 90% 10%, rgba(56, 76, 127, 0.2) 0%, var(--background-color) 85%); */
+    background-color:var(--background-color);
+    color: var(--text-color);
 }
-.result-container{
-    display:flex;
-    width:100%;
-    background-image:linear-gradient(125deg,var(--background-color)35%,#384C7F 100%);
-    align-items: flex-start;
 
-    .left-section{
-        width:50%;
-        display:flex;
-        flex-direction: column;
+/* Base card styling for high-end aesthetics */
+.definition-section, 
+.principles-section, 
+.application-section, 
+.analogy-container {
+    background-color: rgba(17, 24, 39, 0.65);
+    border: 1px solid rgba(34, 211, 238, 0.15);
+    border-radius: 1.25rem;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25),
+                0 0 25px rgba(59, 130, 246, 0.02);
+    transition: all 0.3s ease;
+}
 
-        .title-section{
-            display:flex;
-            flex-wrap:wrap;
+.definition-section:hover, 
+.principles-section:hover, 
+.application-section:hover, 
+.analogy-container:hover {
+    border-color: rgba(34, 211, 238, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3),
+                0 0 30px rgba(34, 211, 238, 0.05);
+    transform: translateY(-2px);
+}
 
-            .title{
-                font-family: var(--heading-font);
-                color:var(--primary-color);
-                font-weight:800;
-            }
-        }
+/* Sections split on desktop */
+.left-section {
+    flex: 1.2;
+    min-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 2.2rem;
+}
 
-        .definition-section{
-            display:flex;
-            flex-direction: column;
-            font-family: var(--primary-font);
-            border:1px solid var(--accent-color);
-            border-radius: 0.75em;
-            background-color:var(--surface-color);
+.right-section {
+    flex: 0.8;
+    min-width: 380px;
+    display: flex;
+    flex-direction: column;
+}
 
-            .outer-header-section{
-                display: flex;
+/* Concept Title Section */
+.left-section .title-section {
+    padding: 0.5rem 0;
 
-                .header{
-                    color:var(--secondary-color);
-                    font-weight:600;
-                }
-            }
+    .title p {
+        font-family: var(--heading-font);
+        font-size: 3.2rem;
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: -0.03em;
+        text-transform: capitalize;
+        color: transparent;
+        background-image: linear-gradient(90deg, #ffffff, var(--accent-color));
+        background-clip: text;
+        -webkit-background-clip: text;
+        filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+    }
+}
 
-            .body-section{
-                display:flex;
+/* Outer headers */
+.outer-header-section {
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding-bottom: 0.6rem;
 
-                .body{
-                    color:var(--text-color);
-                    font-weight:300;
-                }
-            }
-        }
+    .header {
+        font-family: var(--unique-font);
+        font-size: 0.9rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--accent-color);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
 
-        .principles-section, .application-section{
+    .header::before {
+        content: '';
+        display: inline-block;
+        width: 5px;
+        height: 14px;
+        background-image: linear-gradient(180deg, var(--primary-color), var(--accent-color));
+        border-radius: 3px;
+    }
+}
+
+/* Card Body texts */
+.body-section {
+    .body p {
+        font-family: var(--primary-font);
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.75;
+        color: rgba(229, 231, 235, 0.95);
+    }
+}
+
+/* Specific editorial prominent typography for the core definition */
+.definition-section {
+    .body-section .body p {
+        font-size: 1.08rem;
+        font-weight: 450;
+        line-height: 1.8;
+        color: #ffffff;
+    }
+}
+
+/* Sub-card layouts for Principles & Applications */
+.principles-section, .application-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.principle-uno-section, 
+.principle-dos-section, 
+.application-uno-section, 
+.application-dos-section {
+    background-color: rgba(11, 15, 25, 0.4);
+    border: 1px solid rgba(59, 130, 246, 0.1);
+    border-radius: 0.85rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+
+    .body-section .body p {
+        font-size: 0.98rem;
+        line-height: 1.7;
+        color: #e5e7eb;
+    }
+}
+
+.principle-uno-section:hover, 
+.principle-dos-section:hover, 
+.application-uno-section:hover, 
+.application-dos-section:hover {
+    background-color: rgba(11, 15, 25, 0.6);
+    border-color: rgba(59, 130, 246, 0.25);
+    transform: translateX(4px);
+}
+
+/* Analogy styling on the right side */
+.analogy-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    .title-section {
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        padding-bottom: 0.6rem;
+
+        .title p {
+            font-family: var(--unique-font);
+            font-size: 0.9rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--primary-color);
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .title p::before {
+            content: '💡';
+            font-size: 1.1rem;
+        }
+    }
+
+    .body-section {
+        flex-grow: 1;
+        margin-bottom: 2.5rem;
+        
+        .body p {
             font-family: var(--primary-font);
-            border:1px solid var(--accent-color);
-            border-radius: 0.75em;
-            background-color:var(--surface-color);
-
-            .outer-header-section{
-                display: flex;
-
-                .header{
-                    color:var(--secondary-color);
-                    font-weight:600;
-                }
-            }
-
-            .principle-uno-section, .principle-dos-section, .application-uno-section, .application-dos-section{
-                display: flex;
-                flex-direction: column;
-                border:1px solid var(--accent-color);
-                border-radius: 0.75em;
-
-                .inner-title-section{
-                    display: flex;
-
-                    .inner-title{
-                        color:var(--text-color);
-                        font-weight: 500;
-                    }
-                }
-
-                .body-section{
-                    display:flex;
-
-                    .body{
-                        color:var(--text-color);
-                        font-weight:300;
-                    }
-                }
-            }
+            font-size: 1.05rem;
+            line-height: 1.8;
+            font-weight: 400;
+            font-style: italic;
+            color: #f3f4f6;
+            border-left: 3px solid rgba(34, 211, 238, 0.35);
+            padding-left: 1.2rem;
         }
     }
 
-    .right-section{
-        width:50%;
-        display:flex;
-        flex-direction: column;
-        border:1px solid var(--accent-color);
-        border-radius: 0.75em;
-        margin-top:1em;
+    .loading-analogy {
+        animation: pulseAnalogy 1.4s infinite ease-in-out;
+    }
 
-        .analogy-container{
-            display:flex;
-            flex-direction:column;
+    .button-section {
+        display: flex;
+        gap: 1rem;
+        width: 100%;
+        margin-top: auto;
+        flex-wrap: wrap;
 
-            .title-section{
-                display:flex;
-                font-family: var(--heading-font);
+        .another-button, .return-button {
+            flex: 1 1 calc(50% - 0.5rem);
+            min-width: 140px;
+        }
 
-                .title{
-                    font-family: var(--heading-font);
-                    color:var(--primary-color);
-                    font-weight: 800;
-                }
+        button {
+            width: 100%;
+            font-family: var(--heading-font);
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            background-image: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            color: #ffffff;
+            border: none;
+            border-radius: 0.75rem;
+            padding: 1.1rem 0.5rem;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.15);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: center;
+        }
 
-            }
+        button:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(34, 211, 238, 0.3);
+            filter: brightness(1.08);
+        }
 
-            .body-section{
-                display:flex;
-                font-family: var(--primary-font);
-                background-color:var(--surface-color);
+        button:active:not(:disabled) {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+        }
 
-                .body{
-                    color:var(--text-color);
-                    font-weight: 300;
-                }
-            }
-
-            .button-section{
-                display:flex;
-
-                button{
-                    font-family: var(--unique-font);
-                    font-weight: 700;
-                    background-image: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-                    color:var(--text-color);
-                    border:none;
-                    border-radius:0.5em;
-                }
-            }
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background-image: linear-gradient(90deg, #374151, #4b5563);
+            box-shadow: none;
+            transform: none;
         }
     }
 }
 
-@media (min-width:2560px){
-    .result-container{
-        padding:25em;
-        gap:1.5em;
-
-        .left-section{
-            padding:0.5em;
-            gap:0.5em;
-
-            .title-section{
-                padding:0.5em;
-
-                .title{
-                    font-size:10em;
-                }
-            }
-
-            .definition-section{
-                padding:0.5em;
-
-                .outer-header-section{
-                    .header{
-                        font-size:5em;
-                    }
-                }
-
-                .body-section{
-                    .body{
-                        font-size:3em;
-                        line-height:1.1em;
-                    }
-                }
-            }
-
-            .principles-section, .application-section{
-                padding:0.5em; 
-                gap:0.6em;
-
-               .outer-header-section{
-                    .header{
-                        font-size:5em;
-                    }
-               }
-
-               .principle-uno-section, .principle-dos-section, .application-uno-section, .application-dos-section{
-                    padding:0.5em;
-                    gap:0.5em;
-                    .inner-title-section{
-                        .inner-title{
-                            font-size:2.25em;
-                        }
-                    }
-
-                    .body-section{
-                        .body{
-                            font-size:3em;
-                            line-height:1.1em;
-                        }
-                    }
-               }
-            }
-        }
-
-        .right-section{
-            padding:1em;
-
-            .analogy-container{
-                gap:1.25em;
-            }
-
-            .title-section{
-                padding:0.2em;
-                justify-content: center;
-
-                .title{
-                    font-size:10em;
-                }
-            }
-
-            .body-section{
-                .body{
-                    font-size:3em;
-                    line-height:1.1em;
-                }
-            }
-
-            .button-section{
-                justify-content: center;
-                gap:0.5em;
-
-                .another-button, .return-button{
-                    button{
-                        padding:1em;
-                        font-size:1.7em;
-                    }
-                }
-            }
-
-        }
+@keyframes pulseAnalogy {
+    0%, 100% {
+        opacity: 0.45;
+        transform: scale(0.995);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1);
     }
 }
 
+/* ==========================================================================
+   Responsiveness & Media Queries
+   ========================================================================== */
 
-@media (max-width:2560px){
-    .result-container{
-        padding:3.5em;
-        gap:1.5em;
+/* Tablet & Smaller Screens (Stack sections) */
+@media (max-width: 960px) {
+    .result-container {
+        padding: 3rem 1.5rem;
+        gap: 2rem;
+    }
 
-        .left-section{
-            padding:0.5em;
-            gap:0.5em;
+    .left-section, .right-section {
+        flex: 1 1 100%;
+        min-width: 100%;
+    }
 
-            .title-section{
-                padding:0.5em;
+    .left-section .title-section .title p {
+        font-size: 2.4rem;
+    }
 
-                .title{
-                    font-size:3.5em;
-                }
-            }
-
-            .definition-section{
-                padding:0.5em;
-
-                .outer-header-section{
-                    .header{
-                        font-size:2.5em;
-                    }
-                }
-
-                .body-section{
-                    .body{
-                        font-size:1.9em;
-                        line-height:1.1em;
-                    }
-                }
-            }
-
-            .principles-section, .application-section{
-                padding:0.5em; 
-                gap:0.6em;
-
-               .outer-header-section{
-                    .header{
-                        font-size:2.5em;
-                    }
-               }
-
-               .principle-uno-section, .principle-dos-section, .application-uno-section, .application-dos-section{
-                    padding:0.5em;
-                    gap:0.5em;
-                    .inner-title-section{
-                        .inner-title{
-                            font-size:2.25em;
-                        }
-                    }
-
-                    .body-section{
-                        .body{
-                            font-size:1.9em;
-                            line-height:1.1em;
-                        }
-                    }
-               }
-            }
-        }
-
-        .right-section{
-            padding:1em;
-
-            .analogy-container{
-                gap:1.25em;
-            }
-
-            .title-section{
-                padding:0.2em;
-                justify-content: center;
-
-                .title{
-                    font-size:2.5em;
-                }
-            }
-
-            .body-section{
-                .body{
-                    font-size:2em;
-                    line-height:1.1em;
-                }
-            }
-
-            .button-section{
-                justify-content: center;
-                gap:0.5em;
-
-                .another-button, .return-button{
-                    button{
-                        padding:1em;
-                        font-size:1.7em;
-                    }
-                }
-            }
-
-        }
+    .analogy-container .body-section {
+        margin-bottom: 2rem;
     }
 }
 
-@media (max-width:1024px){
-    .result-container{
-        padding:1em;
-        gap:1.5em;
+/* Mobile Screens */
+@media (max-width: 600px) {
+    .result-container {
+        padding: 2rem 1rem;
+        gap: 1.5rem;
+    }
 
-        .left-section{
-            gap:0.5em;
+    .definition-section, 
+    .principles-section, 
+    .application-section, 
+    .analogy-container {
+        padding: 1.5rem 1.25rem;
+        border-radius: 1rem;
+    }
 
-            .title-section{
-                padding:0.2em;
+    .left-section .title-section .title p {
+        font-size: 2rem;
+    }
 
-                .title{
-                    font-size:1.9em;
-                }
-            }
-
-            .definition-section{
-                padding:0.2em;
-
-                .outer-header-section{
-                    .header{
-                        font-size:1em;
-                    }
-                }
-
-                .body-section{
-                    .body{
-                        font-size:0.9em;
-                        line-height:1.1em;
-                    }
-                }
-            }
-
-            .principles-section, .application-section{
-                padding:0.1em; 
-                gap:0.2em;
-
-               .outer-header-section{
-                    .header{
-                        font-size:1em;
-                    }
-               }
-
-               .principle-uno-section, .principle-dos-section, .application-uno-section, .application-dos-section{
-                    padding:0.1em;
-                    .inner-title-section{
-                        .inner-title{
-                            font-size:1em;
-                        }
-                    }
-
-                    .body-section{
-                        .body{
-                            font-size:0.9em;
-                            line-height:1.1em;
-                        }
-                    }
-               }
-            }
+    .outer-header-section {
+        margin-bottom: 1rem;
+        
+        .header {
+            font-size: 1rem;
         }
+    }
 
-        .right-section{
-            gap:0.5em;
+    .body-section .body p, 
+    .analogy-container .body-section .body p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
 
-            .analogy-container{
-                gap:0.45em;
-            }
+    .principle-uno-section, 
+    .principle-dos-section, 
+    .application-uno-section, 
+    .application-dos-section {
+        padding: 1.2rem 1rem;
+        border-radius: 0.75rem;
+    }
 
-            .title-section{
-                padding:0.2em;
-                justify-content: center;
+    .principle-uno-section:hover, 
+    .principle-dos-section:hover, 
+    .application-uno-section:hover, 
+    .application-dos-section:hover {
+        transform: none; /* Disable horizontal slide hover on mobile tap */
+    }
 
-                .title{
-                    font-size:1.9em;
-                }
-            }
-
-            .body-section{
-                .body{
-                    font-size:0.9em;
-                    line-height:1.1em;
-                }
-            }
-
-            .button-section{
-                justify-content: center;
-                gap:0.5em;
-
-                .return-button,.another-button{
-                    button{
-                        font-size:1em;
-                        padding:0.5em;
-                    }
-                }
-            }
-
-        }
+    .analogy-container .button-section button {
+        padding: 0.95rem;
+        font-size: 0.95rem;
     }
 }
 
-@media (max-width:768px){
-    .result-container{
-        padding:0.5em;
-        gap:1.5em;
-
-        .left-section{
-            padding:0.5em;
-            gap:0.5em;
-            width:100%;
-
-            .title-section{
-                padding:0.2em;
-
-                .title{
-                    font-size:1.2em;
-                }
-            }
-
-            .definition-section{
-                padding:0.25em;
-
-                .outer-header-section{
-                    .header{
-                        font-size:0.8em;
-                    }
-                }
-
-                .body-section{
-                    .body{
-                        font-size:0.7em;
-                        line-height:1em;
-                    }
-                }
-            }
-
-            .principles-section, .application-section{
-                padding:0.25em; 
-                gap:0.2em;
-
-               .outer-header-section{
-                    .header{
-                        font-size:0.8em;
-                    }
-               }
-
-               .principle-uno-section, .principle-dos-section, .application-uno-section, .application-dos-section{
-                    padding:0.25em;
-                    .inner-title-section{
-                        .inner-title{
-                            font-size:0.8em;
-                        }
-                    }
-
-                    .body-section{
-                        .body{
-                            font-size:0.7em;
-                            line-height:1em;
-                        }
-                    }
-               }
-            }
-        }
-
-        .right-section{
-            gap:0.5em;
-            width:100%;
-            padding:0.5em;
-
-            .analogy-container{
-                gap:0.45em;
-            }
-
-            .title-section{
-                padding:0.2em;
-                justify-content: center;
-
-                .title{
-                    font-size:1.2em;
-                }
-            }
-
-            .body-section{
-                .body{
-                    padding:0.2em;
-                    font-size:0.7em;
-                    line-height:1em;
-                }
-            }
-
-            .button-section{
-                justify-content: center;
-                gap:0.5em;
-
-                .return-button,.another-button{
-                    button{
-                        font-size:0.7em;
-                        padding:0.5em;
-                    }
-                }
-            }
-
-        }
-    }
-}
-
-@media (max-width:525px){
-    .result-container{
-        flex-direction: column;
-        gap:1em;
-
-        .left-section{
-            gap:0.25em;
-            padding:0.15em;
-
-            .title-section{
-                padding:0.1em;
-            }
-
-            .definition-section{
-                padding:0.25em;
-
-                .outer-header-section{
-                    .header{
-                        font-size:0.75em;
-                    }
-                }
-
-                .body-section{
-                    .body{
-                        font-size:0.6em;
-                        line-height:0.9em;
-                    }
-                }
-            }
-
-            .principles-section, .application-section{
-                padding:0.25em; 
-                gap:0.1em;
-
-               .outer-header-section{
-                    .header{
-                        font-size:0.75em;
-                    }
-               }
-
-               .principle-uno-section, .principle-dos-section, .application-uno-section, .application-dos-section{
-                    padding:0.25em;
-                    .inner-title-section{
-                        .inner-title{
-                            font-size:0.7em;
-                        }
-                    }
-
-                    .body-section{
-                        .body{
-                            font-size:0.6em;
-                            line-height:0.9em;
-                        }
-                    }
-               }
-            }
-        }
-
-        .right-section{
-            padding:0.15em;
-            gap:0.25em;
-            justify-content: center;
-
-            .title-section{
-                padding:0.1em;
-            }
-
-            .body-section{
-                .body{
-                    padding:0.2em;
-                    font-size:0.6em;
-                    line-height:0.9em;
-                }
-            }
-
-            .button-section{
-                justify-content: center;
-                gap:0.5em;
-
-                .return-button,.another-button{
-                    button{
-                        font-size:0.3em;
-                        padding:0.5em;
-                    }
-                }
-            }
-
-        }
+@media (max-width: 360px) {
+    .left-section .title-section .title p {
+        font-size: 1.7rem;
     }
 }

@@ -9,8 +9,13 @@ dotenv.config();
 // The models list will query the preferred one first, then fallback sequentially
 const FALLBACK_MODELS = [
   process.env.MODEL_NAME,
+<<<<<<< HEAD
   // "deepseek/deepseek-v4-flash:free",
   // "google/gemma-4-31b-it:free",
+=======
+  "deepseek/deepseek-v4-flash:free",
+  "google/gemma-4-31b-it:free",
+>>>>>>> 6e5416cf2df5acf61289cf10822920c421bcecbb
   "openrouter/free"
 ].filter(Boolean);
 
@@ -20,6 +25,7 @@ const app = express();
 app.use(cors());
 app.use(json());
 
+<<<<<<< HEAD
 // Helper function to robustly extract and parse JSON from LLM text
 function parseRobustJson(text) {
   const start = text.indexOf('{');
@@ -78,6 +84,10 @@ function parseRobustJson(text) {
 
 // Helper function to query OpenRouter with automatic multi-model fallback and JSON validation
 async function queryOpenRouterWithFallback(prompt, parseFn) {
+=======
+// Helper function to query OpenRouter with automatic multi-model fallback
+async function queryOpenRouterWithFallback(prompt) {
+>>>>>>> 6e5416cf2df5acf61289cf10822920c421bcecbb
   let lastError = null;
 
   for (const model of FALLBACK_MODELS) {
@@ -110,6 +120,10 @@ async function queryOpenRouterWithFallback(prompt, parseFn) {
 
       const data = await response.json();
       
+<<<<<<< HEAD
+=======
+      // OpenRouter sometimes returns 200 OK but with an error body (like Venice upstream 429)
+>>>>>>> 6e5416cf2df5acf61289cf10822920c421bcecbb
       if (data.error) {
         throw new Error(`OpenRouter Error: ${data.error.message || JSON.stringify(data.error)}`);
       }
@@ -120,6 +134,7 @@ async function queryOpenRouterWithFallback(prompt, parseFn) {
       }
 
       console.log(`Successfully received response from model: ${model}`);
+<<<<<<< HEAD
       
       // Attempt to parse and validate
       const parsedData = parseFn(text);
@@ -128,11 +143,21 @@ async function queryOpenRouterWithFallback(prompt, parseFn) {
 
     } catch (err) {
       console.warn(`Model "${model}" failed or returned invalid JSON: ${err.message}. Trying next fallback...`);
+=======
+      return text;
+
+    } catch (err) {
+      console.warn(`Model "${model}" failed: ${err.message}. Trying next fallback...`);
+>>>>>>> 6e5416cf2df5acf61289cf10822920c421bcecbb
       lastError = err;
     }
   }
 
+<<<<<<< HEAD
   throw new Error(`All fallback models exhausted or failed to return valid JSON. Last error: ${lastError ? lastError.message : "Unknown"}`);
+=======
+  throw new Error(`All fallback models exhausted. Last error: ${lastError ? lastError.message : "Unknown"}`);
+>>>>>>> 6e5416cf2df5acf61289cf10822920c421bcecbb
 }
 
 app.post("/api/explain", async (req, res) => {
@@ -170,6 +195,7 @@ app.post("/api/explain", async (req, res) => {
       - Each text block MUST be highly detailed, informative, and substantial in length. Avoid simple sentences.
       - STRICT: Return ONLY raw JSON (no markdown, no backticks, no wrap).
       - Keep vocabulary and depth perfectly tuned for a ${level} learner, but maximize elaboration.
+<<<<<<< HEAD
       - Ensure all double quotes inside JSON string values are properly escaped as \\" (or use single quotes instead) to prevent JSON parsing errors.
       - Do NOT include any trailing commas after the last property or list item.
     `;
@@ -186,6 +212,37 @@ app.post("/api/explain", async (req, res) => {
       data.applications = data.applications.slice(0, 2);
       return data;
     });
+=======
+    `;
+
+    const text = await queryOpenRouterWithFallback(prompt);
+
+    let parsed;
+    try {
+      const startIndex = text.indexOf('{');
+      const endIndex = text.lastIndexOf('}');
+      if (startIndex === -1 || endIndex === -1 || endIndex < startIndex) {
+        throw new Error("No valid JSON block found in AI response.");
+      }
+      const jsonBlock = text.slice(startIndex, endIndex + 1);
+      parsed = JSON.parse(jsonBlock);
+
+      // 🔹 Safety: ensure only 2 items
+      if (parsed.principles) {
+        parsed.principles = parsed.principles.slice(0, 2);
+      }
+      if (parsed.applications) {
+        parsed.applications = parsed.applications.slice(0, 2);
+      }
+
+    } catch (err) {
+      console.error("JSON parsing error:", err);
+      return res.status(500).json({
+        error: "Failed to parse AI response as valid JSON",
+        raw: text,
+      });
+    }
+>>>>>>> 6e5416cf2df5acf61289cf10822920c421bcecbb
 
     res.json(parsed);
 
@@ -222,6 +279,7 @@ app.post("/api/analogy", async (req, res) => {
       - Must be an elaborate, rich paragraph.
       - Make sure the analogy is highly appropriate for a ${level} level.
       - STRICT: Return ONLY raw JSON (no markdown, no explanation, no backticks).
+<<<<<<< HEAD
       - Ensure all double quotes inside JSON string values are properly escaped as \\" (or use single quotes instead) to prevent JSON parsing errors.
       - Do NOT include any trailing commas.
     `;
@@ -233,6 +291,28 @@ app.post("/api/analogy", async (req, res) => {
       }
       return data;
     });
+=======
+    `;
+
+    const text = await queryOpenRouterWithFallback(prompt);
+
+    let parsed;
+    try {
+      const startIndex = text.indexOf('{');
+      const endIndex = text.lastIndexOf('}');
+      if (startIndex === -1 || endIndex === -1 || endIndex < startIndex) {
+        throw new Error("No valid JSON block found in AI response.");
+      }
+      const jsonBlock = text.slice(startIndex, endIndex + 1);
+      parsed = JSON.parse(jsonBlock);
+    } catch (err) {
+      console.error("Analogy parsing error:", err);
+      return res.status(500).json({
+        error: "Failed to parse AI analogy response",
+        raw: text,
+      });
+    }
+>>>>>>> 6e5416cf2df5acf61289cf10822920c421bcecbb
 
     res.json(parsed);
 

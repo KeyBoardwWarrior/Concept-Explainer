@@ -4,6 +4,7 @@ import HistoryDrawer from "../HistoryDrawer/HistoryDrawer";
 import "./Header.css";
 
 function Header(){
+<<<<<<< HEAD
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
     return(
@@ -27,11 +28,23 @@ function Header(){
                         </svg>
                         <span>History</span>
                     </button>
+=======
+        return(
+            <>
+                <div className="header-container">
+                    <div className="header-logo-container">
+                        <Link to="/">
+                            <span className="logo">Concept Explainer</span>
+                            <span className="logo-dot">.</span>
+                        </Link>
+                    </div> 
+>>>>>>> 6e5416cf2df5acf61289cf10822920c421bcecbb
                 </div>
             </div>
             <HistoryDrawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)} />
         </>
     );
 }
+
 
 export default Header;

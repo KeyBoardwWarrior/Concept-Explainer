@@ -15,6 +15,10 @@
     "cors": "^2.8.6",
     "dotenv": "^16.4.7",
     "express": "^5.2.1",
+<<<<<<< HEAD
+    "jsonrepair": "^3.14.0",
+=======
+>>>>>>> 6e5416cf2df5acf61289cf10822920c421bcecbb
     "node-fetch": "^3.3.2"
   }
 }

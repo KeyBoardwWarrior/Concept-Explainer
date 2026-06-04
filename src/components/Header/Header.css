@@ -47,6 +47,68 @@
 }
 
 /* Responsiveness for smaller viewports */
+<<<<<<< HEAD
+.header-actions {
+    display: flex;
+    align-items: center;
+}
+
+.history-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 0.6rem;
+    color: var(--secondary-color);
+    padding: 0.6rem 1rem;
+    font-family: var(--primary-font);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.history-toggle-btn:hover {
+    color: #ffffff;
+    background-color: rgba(59, 130, 246, 0.08);
+    border-color: rgba(59, 130, 246, 0.3);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.12);
+}
+
+.history-btn-icon {
+    transition: transform 0.4s ease;
+}
+
+.history-toggle-btn:hover .history-btn-icon {
+    transform: rotate(-15deg);
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        padding: 1rem 1.5rem;
+    }
+
+    .header-logo-container {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-container {
+        justify-content: space-between;
+        padding: 0.9rem 1.2rem;
+    }
+
+    .history-toggle-btn {
+        padding: 0.55rem;
+        border-radius: 50%;
+        gap: 0;
+    }
+
+    .history-toggle-btn span {
+        display: none;
+=======
 @media (max-width: 768px) {
     .header-container {
         padding: 1rem 1.5rem;
@@ -61,5 +123,6 @@
     .header-container {
         justify-content: center;
         padding: 0.9rem 1rem;
+>>>>>>> 6e5416cf2df5acf61289cf10822920c421bcecbb
     }
 }

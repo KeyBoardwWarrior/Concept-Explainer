@@ -6,7 +6,7 @@ function Header(){
                 <div className="header-container">
                     <div className="header-logo-container">
                         <Link to="/">
-                            <span className="logo">Curator AI</span>
+                            <span className="logo">Concept Explainer</span>
                             <span className="logo-dot">.</span>
                         </Link>
                     </div> 

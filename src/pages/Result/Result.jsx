@@ -2,12 +2,8 @@ import './Result.css';
 import Header from '../../components/Header/Header';
 import { useNavigate } from 'react-router';
 import { useLocation } from "react-router";
-<<<<<<< HEAD
 import { useState, useEffect } from "react";
 import { updateHistoryAnalogy } from '../../utils/history';
-=======
-import { useState } from "react";
->>>>>>> 6e5416cf2df5acf61289cf10822920c421bcecbb
 
 function Result(){
     const navigate = useNavigate();
@@ -15,14 +11,11 @@ function Result(){
     const [analogy, setAnalogy] = useState(state?.data?.analogy || "");
     const [isGenerating, setIsGenerating] = useState(false);
 
-<<<<<<< HEAD
     // Sync state when location changes (e.g. clicking a history item while on Result page)
     useEffect(() => {
         setAnalogy(state?.data?.analogy || "");
     }, [state?.concept, state?.level, state?.data?.analogy]);
 
-=======
->>>>>>> 6e5416cf2df5acf61289cf10822920c421bcecbb
     const handleGenerateNewAnalogy = async () => {
         if (isGenerating) return;
         try {
@@ -45,10 +38,7 @@ function Result(){
             const data = await res.json();
             if (data.analogy) {
                 setAnalogy(data.analogy);
-<<<<<<< HEAD
                 updateHistoryAnalogy(state?.concept, state?.level || "beginner", data.analogy);
-=======
->>>>>>> 6e5416cf2df5acf61289cf10822920c421bcecbb
             } else {
                 throw new Error("No analogy returned from server.");
             }

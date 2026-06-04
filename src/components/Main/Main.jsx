@@ -4,13 +4,9 @@ import Footer from "../Footer/Footer";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
-<<<<<<< HEAD
 import { saveToHistory } from "../../utils/history";
 
 function Main({setIsLoading}){
-=======
-function Main({isLoading, setIsLoading}){
->>>>>>> 6e5416cf2df5acf61289cf10822920c421bcecbb
     const navigate = useNavigate();
     const [level,setLevel] = useState('beginner');
     const [concept, setConcept] = useState("");
@@ -32,10 +28,7 @@ function Main({isLoading, setIsLoading}){
             }
 
             const data = await res.json();
-<<<<<<< HEAD
             saveToHistory(concept.trim(), level, data);
-=======
->>>>>>> 6e5416cf2df5acf61289cf10822920c421bcecbb
             navigate("/result",{state:{data,concept: concept.trim(), level}});
         }catch(err){
             console.error(err);
